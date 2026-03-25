@@ -45,6 +45,15 @@ docker compose up --build -d
 - **Customer API**: [http://localhost:8082/rest/khachhang/all](http://localhost:8082/rest/khachhang/all)
 - **Product API**: [http://localhost:8083/rest/hanghoa/all](http://localhost:8083/rest/hanghoa/all)
 
+### 4. run test
+
+```java
+mvn exec:java -Dexec.mainClass="service.client.TestServiceClient" \
+  -DHOA_DON_BASE_URL="http://localhost:8080/rest" \
+  -DKHACH_HANG_BASE_URL="http://localhost:8082/rest" \
+  -DHANG_HOA_BASE_URL="http://localhost:8083/rest"
+```
+
 ## Service Discovery
 Endpoints are configured via environment variables in `docker-compose.yml`:
 - `KHACH_HANG_BASE_URL`
