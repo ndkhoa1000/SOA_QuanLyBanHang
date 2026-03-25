@@ -1,0 +1,226 @@
+/* Compact, clean CSS for Sales Management System */
+
+:root {
+    --primary-color: #4a90e2;
+    --primary-hover: #357abd;
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+    --table-header-bg: #4a90e2;
+    --table-header-text: #ffffff;
+    --danger-color: #e74c3c;
+    --danger-hover: #c0392b;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px 10px;
+    min-height: 100vh;
+    font-size: 14px; /* Base size reduced */
+}
+
+.container {
+    background-color: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px; /* Slightly narrower */
+    padding: 20px 30px; /* Reduced vertical padding */
+    border-radius: 8px; /* Less rounded corners */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softer shadow */
+}
+
+h1 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.8em; /* Reduced size */
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 8px;
+}
+
+h3 {
+    color: var(--text-color);
+    text-align: center;
+    margin-top: 25px; /* Reduced */
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.nav-links {
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.1s ease;
+}
+
+a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+/* Action Links Specific */
+a[href*="delete"], a[href*="remove"] {
+    color: var(--danger-color);
+}
+
+a[href*="delete"]:hover, a[href*="remove"]:hover {
+    color: var(--danger-hover);
+}
+
+/* Table Styles - Much more compact */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 15px 0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+th, td {
+    padding: 8px 12px; /* Tight padding */
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fbff;
+}
+
+tr:hover {
+    background-color: #ecf3f9;
+}
+
+/* Form Styles - Tighter rows */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px; /* Reduced gap */
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.form-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px; /* Tighter gap */
+}
+
+.form-row label {
+    flex: 1;
+    text-align: right;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-row input, .form-row select {
+    flex: 2;
+    padding: 6px 10px; /* Slimmer inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Less rounded */
+    font-size: 14px; /* Base equivalent */
+}
+
+.form-row input:focus, .form-row select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2); /* Smaller focus ring */
+}
+
+/* Button Styles - Compact sizes */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px; /* Reduced */
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px; /* Reduced padding */
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.1s, transform 0.1s;
+    box-shadow: 0 2px 4px rgba(74, 144, 226, 0.2);
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 3px 6px rgba(74, 144, 226, 0.3);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(74, 144, 226, 0.2);
+}
+
+/* Home List Styles */
+ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 400px;
+}
+
+li {
+    margin: 10px 0; /* Tighter list */
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+li:hover {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(74, 144, 226, 0.15);
+}
+
+li a {
+    display: block;
+    padding: 12px 20px; /* Less padding */
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+li:hover a {
+    color: var(--primary-color);
+    text-decoration: none;
+}

@@ -1,0 +1,40 @@
+services:
+  khachhang-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_PROFILE: khachhang
+        WAR_NAME: khachhang-service
+    container_name: khachhang-service
+    ports:
+      - "8082:8080"
+
+  hanghoa-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_PROFILE: hanghoa
+        WAR_NAME: hanghoa-service
+    container_name: hanghoa-service
+    ports:
+      - "8083:8080"
+
+  hoadon-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_PROFILE: hoadon
+        WAR_NAME: hoadon-service
+    container_name: hoadon-service
+    depends_on:
+      - khachhang-service
+      - hanghoa-service
+    environment:
+      HOA_DON_BASE_URL: http://hoadon-service:8080/rest
+      KHACH_HANG_BASE_URL: http://khachhang-service:8080/rest
+      HANG_HOA_BASE_URL: http://hanghoa-service:8080/rest
+    ports:
+      - "8080:8080"
