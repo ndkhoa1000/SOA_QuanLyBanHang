@@ -1,11 +1,10 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
 import model.*;
 
 @Path("/khachhang")
@@ -66,7 +65,7 @@ public class KhachHangService {
         }
 
         KhachHangVIP vip = new KhachHangVIP(cccd, ten, dc, giam);
-        vip.setNgayTao(new MyDate());
+        vip.setNgayTao(new Date());
         ds.add(vip);
 
         return "Da them khach hang VIP moi";
@@ -103,7 +102,7 @@ public class KhachHangService {
             KhachHang kh = ds.get(i);
             if(kh.getCccd().equals(cccd) && !(kh instanceof KhachHangVIP)){
                 KhachHangVIP vip = new KhachHangVIP(kh.getCccd(), kh.getHten(), kh.getDchi(), giam);
-                vip.setNgayTao(new MyDate());
+                vip.setNgayTao(new Date());
                 ds.set(i, vip);
                 return "Da nang cap khach hang thanh VIP";
             }

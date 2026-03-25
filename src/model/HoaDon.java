@@ -1,11 +1,12 @@
 package model;
 
+import java.util.Date;
 import java.util.List;
 
 public class HoaDon {
 
     private String mso;
-    private MyDate tde;
+    private Date tde;
     private String nvien;
 
     private String idkhachHang;
@@ -13,7 +14,7 @@ public class HoaDon {
 
     public HoaDon() {}
 
-    public HoaDon(String mso, MyDate tde, String nvien) {
+    public HoaDon(String mso, Date tde, String nvien) {
         this.mso = mso;
         this.tde = tde;
         this.nvien = nvien;
@@ -27,12 +28,12 @@ public class HoaDon {
         this.mso = mso;
     }
 
-    public MyDate getTde() {
+    public Date getTde() {
         return tde;
     }
 
 
-	public void setTde(MyDate tde) {
+	public void setTde(Date tde) {
         this.tde = tde;
     }
 

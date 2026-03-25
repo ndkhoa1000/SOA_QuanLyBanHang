@@ -1,18 +1,16 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import javax.ws.rs.*;
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.*;
-
-import org.glassfish.jersey.client.ClientConfig;
-
 import model.*;
+import org.glassfish.jersey.client.ClientConfig;
 import util.ServiceUrlConfig;
 
 @Path("/hoadon")
@@ -75,7 +73,7 @@ public class HoaDonService {
         hd.setNvien(nvien);
         hd.setKhachHang(kh.getCccd());
         hd.setChiTietList(new ArrayList<>());
-        hd.setTde(new MyDate());
+        hd.setTde(new Date());
         ds.add(hd);
 
         return "Da tao hoa don: " + hd.getMso();

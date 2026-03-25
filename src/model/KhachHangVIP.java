@@ -1,9 +1,12 @@
 package model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class KhachHangVIP extends KhachHang {
 
     private double tleGiam;
-    private MyDate ngayTao;
+    private Date ngayTao;
 
     public KhachHangVIP() {
     }
@@ -11,10 +14,10 @@ public class KhachHangVIP extends KhachHang {
     public KhachHangVIP(String cccd, String hten, String dchi, double tleGiam) {
         super(cccd, hten, dchi);
         this.tleGiam = tleGiam;
-        this.ngayTao = new MyDate();
+        this.ngayTao = new Date();
     }
 
-    public KhachHangVIP(String cccd, String hten, String dchi, double tleGiam, MyDate ngayTao) {
+    public KhachHangVIP(String cccd, String hten, String dchi, double tleGiam, Date ngayTao) {
         super(cccd, hten, dchi);
         this.tleGiam = tleGiam;
         this.ngayTao = ngayTao;
@@ -28,18 +31,19 @@ public class KhachHangVIP extends KhachHang {
         this.tleGiam = tleGiam;
     }
 
-    public MyDate getNgayTao() {
+    public Date getNgayTao() {
         return ngayTao;
     }
 
-    public void setNgayTao(MyDate ngayTao) {
+    public void setNgayTao(Date ngayTao) {
         this.ngayTao = ngayTao;
     }
 
     public String getNgayTaoString() {
         if (ngayTao == null)
             return null;
-        return ngayTao.toString();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(ngayTao);
     }
 
     @Override

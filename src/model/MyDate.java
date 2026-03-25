@@ -1,67 +1,55 @@
 package model;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MyDate {
 
-    private int ngay;
-    private int thang;
-    private int nam;
+    private Date date;
 
     public MyDate() {
-
-        LocalDate now = LocalDate.now();
-        this.ngay = now.getDayOfMonth();
-        this.thang = now.getMonthValue();
-        this.nam = now.getYear();
+        this.date = new Date();
     }
 
     public MyDate(int ngay, int thang, int nam) {
-        this.ngay = ngay;
-        this.thang = thang;
-        this.nam = nam;
+        // java.util.Date uses 0-based months and year since 1900
+        this.date = new Date(nam - 1900, thang - 1, ngay);
     }
 
     public int getNgay() {
-        return ngay;
+        return date.getDate();
     }
 
     public void setNgay(int ngay) {
-        this.ngay = ngay;
+        date.setDate(ngay);
     }
 
     public int getThang() {
-        return thang;
+        return date.getMonth() + 1;
     }
 
     public void setThang(int thang) {
-        this.thang = thang;
+        date.setMonth(thang - 1);
     }
 
     public int getNam() {
-        return nam;
+        return date.getYear() + 1900;
     }
 
     public void setNam(int nam) {
-        this.nam = nam;
+        date.setYear(nam - 1900);
     }
 
     public int compareTo(MyDate other) {
-        if (this.nam != other.nam) {
-            return this.nam - other.nam;
-        }
-        if (this.thang != other.thang) {
-            return this.thang - other.thang;
-        }
-        return this.ngay - other.ngay;
+        return this.date.compareTo(other.date);
     }
 
     public boolean after(MyDate other) {
-        return this.compareTo(other) > 0;
+        return this.date.after(other.date);
     }
 
     public boolean before(MyDate other) {
-        return this.compareTo(other) < 0;
+        return this.date.before(other.date);
     }
 
     public void nhap() {
@@ -72,6 +60,7 @@ public class MyDate {
 
     @Override
     public String toString() {
-        return String.format("%02d/%02d/%04d", ngay, thang, nam);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(date);
     }
 }
