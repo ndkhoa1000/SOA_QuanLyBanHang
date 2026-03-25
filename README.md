@@ -25,7 +25,17 @@ mvn package -Phoadon
 ```
 
 ### 2. Run with Docker Compose
-To build the images and start the containers:
+To start the services with automatic rebuild on file changes (Hot Reload):
+```bash
+docker compose watch
+```
+
+This command will:
+1. Build and start all services.
+2. Watch for changes in `src/`, `WebContent/`, or `pom.xml`.
+3. Automatically rebuild and redeploy the affected container when you save a file.
+
+Alternatively, to just run without watching:
 ```bash
 docker compose up --build -d
 ```

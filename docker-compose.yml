@@ -7,8 +7,18 @@ services:
         SERVICE_PROFILE: khachhang
         WAR_NAME: khachhang-service
     container_name: khachhang-service
+    volumes:
+      - ./target/khachhang-service.war:/usr/local/tomcat/webapps/ROOT.war
     ports:
       - "8082:8080"
+    develop:
+      watch:
+        - action: rebuild
+          path: pom.xml
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: WebContent
 
   hanghoa-service:
     build:
@@ -18,8 +28,18 @@ services:
         SERVICE_PROFILE: hanghoa
         WAR_NAME: hanghoa-service
     container_name: hanghoa-service
+    volumes:
+      - ./target/hanghoa-service.war:/usr/local/tomcat/webapps/ROOT.war
     ports:
       - "8083:8080"
+    develop:
+      watch:
+        - action: rebuild
+          path: pom.xml
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: WebContent
 
   hoadon-service:
     build:
@@ -36,5 +56,15 @@ services:
       HOA_DON_BASE_URL: http://hoadon-service:8080/rest
       KHACH_HANG_BASE_URL: http://khachhang-service:8080/rest
       HANG_HOA_BASE_URL: http://hanghoa-service:8080/rest
+    volumes:
+      - ./target/hoadon-service.war:/usr/local/tomcat/webapps/ROOT.war
     ports:
       - "8080:8080"
+    develop:
+      watch:
+        - action: rebuild
+          path: pom.xml
+        - action: rebuild
+          path: src
+        - action: rebuild
+          path: WebContent
